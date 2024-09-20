@@ -1,0 +1,50 @@
+﻿/*This body color is set for all pages*/
+body {
+    background-color: hsl(198, 100%, 95%);
+}
+
+/*This is the color and weight for all h1 tags*/
+h1 {
+    color: whitesmoke;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*this is a horizontal line class formated to add to pages*/
+hr.one{
+    border: 1px solid blue;
+}
+
+/*this is set to format the table*/
+table,th,td
+{
+    border:1px solid black;
+    
+    text-align: center;
+}
+
+.inline
+
+{
+    display: inline
+
+}
+
+/*This is the class that is used for the header*/
+.myheader {
+    height: 25%;
+    background-color: darkcyan;
+}
+
+#menu {
+    width: 15%;
+    float: left;
+    background: hsl(198, 100%, 95%);
+    margin-left: 2%;
+    margin-right: 5px;
+    text-align: center;
+    height: 70%;
+    flex: 1;
+    height: 600px;
+    border-right: 2px solid blue;
+}	
