@@ -1,43 +1,47 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>IT eBooks Search</title>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Styles.css" rel="stylesheet" />
+   
 </head>
-
 <body>
 
-    <?php
-    $service_point ="http://jsonplaceholder.typicode.com/posts/1/comments";
-    $resource=file_get_contents($service_point);
-    ?>
+
+    <div class="element">
+
+        <h1>Module2 </h1>
+        <br /><br />
+
+    </div>
+    <hr class="one" />
+
+    <center><h2> Book List</h2></center>
+
+
 
     <script>
-    $(function(){
-        //dump json file content to a JavaScript JSON object
-        var json = <?php echo $resource; ?>;
+        $(function () {
+            $.getJSON("openlibrary-search.json", function (json) {
 
-        var resultsHTML="";
-        for (i in json)
-        {
-            resultsHTML+="<h3>"+json[i].id+". ";
-            resultsHTML+=json[i].name+ " - ";
-            resultsHTML+=json[i].email+ "</h3>";
-            resultsHTML+="<p>"+json[i].body+ "</p>";
-            resultsHTML+="<hr>";
-        }
-        $("#results").html(resultsHTML);
-    })
+                var courseHTML = "";
+
+                for (i in json.docs) {
+
+                    courseHTML += "<br>" + "<b>Author: </b>" + json.docs[i].author_name + "<br>" + "<b>Title: </b>" + json.docs[i].title + "<br>" + "<b>Title Suggest:  </b>" + json.docs[i].title_suggest + "<br>" + "<b>Publisher:  </b>" + json.docs[i].publisher + "<br>" + "<br>";
+                }
+
+                $("#BookList").html(courseHTML);
+            });
+        })
     </script>
 
-    <h1>Comments</h1>
+    <hr class="one" />
 
-    <p id="results"</p>
 
-    <div id="results"></div>
+
 
 </body>
-
-
 </html>
