@@ -59,13 +59,13 @@
 
     <script>
         $(function () {
-            $.getJSON("openlibrary-search.json", function (json) {
+            $.getJSON("google-books-search-search.json", function (json) {
 
                 var courseHTML = "";
 
-                for (i in json.docs) {
+                for (i in json.items) {
 
-                    courseHTML += "<br>" + "<b>Author: </b>" + json.docs[i].author_name + "<br>" + "<b>Title: </b>" + json.docs[i].title + "<br>" + "<b>Title Suggest:  </b>" + json.docs[i].title_suggest + "<br>" + "<b>Publisher:  </b>" + json.docs[i].publisher + "<br>" + "<br>";
+                    courseHTML += "<br>" + "<b>Author: </b>" + json.items[i].authors + "<br>" + "<b>Title: </b>" + json.items[i].title + "<br>" + "<b>Subtitle:  </b>" + json.items[i].subtitle + "<br>" + "<b>Publisher:  </b>" + json.items[i].publisher + "<br>" + "<br>";
                 }
 
                 $("#BookList").html(courseHTML);
