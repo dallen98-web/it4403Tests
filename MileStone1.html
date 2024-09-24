@@ -40,9 +40,11 @@
 
     <br />
 
+    <center><h2>Google Search Book List</h2></center>
+
     <center><div id="BookList2"></div></center>
 
-
+    <hr class="one" />
 
     <script>
         $(function () {
@@ -52,7 +54,7 @@
 
                 for (i in json) {
 
-                    courseHTML += "<br>" + "<b>Author: </b>" + json.[i].authors + "<br>" + "<b>Title: </b>" + json.[i].title + "<br>" + "<b>SubTitle:  </b>" + json.[i].Subtitle + "<br>" + "<b>Publisher:  </b>" + json.[i].publisher + "<br>" + "<br>";
+                    courseHTML += "<br>" + "<b>Author: </b>" + json[i].authors + "<br>" + "<b>Title: </b>" + json[i].title + "<br>" + "<b>SubTitle:  </b>" + json[i].Subtitle + "<br>" + "<b>Publisher:  </b>" + json[i].publisher + "<br>" + "<br>";
                 }
 
                 $("#BookList2").html(courseHTML2);
