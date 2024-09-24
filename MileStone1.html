@@ -48,13 +48,13 @@
 
     <script>
         $(function () {
-            $.getJSON("google-books-search.json", function (json) {
+            $.getJSON("google-books-search.json", function (json2) {
 
                 var courseHTML2 = "";
 
-                for (i in json.items) {
+                for (i in json2.items) {
 
-                    courseHTML += "<br>" + "<b>Author: </b>" + json.items[i].authors + "<br>" + "<b>Title: </b>" + json.items[i].title + "<br>" + "<b>SubTitle:  </b>" + json.items[i].Subtitle + "<br>" + "<b>Publisher:  </b>" + json.items[i].publisher + "<br>" + "<br>";
+                    courseHTML += "<br>" + "<b>Author: </b>" + json2.items[i].authors + "<br>" + "<b>Title: </b>" + json2.items[i].title + "<br>" + "<b>SubTitle:  </b>" + json2.items[i].Subtitle + "<br>" + "<b>Publisher:  </b>" + json2.items[i].publisher + "<br>" + "<br>";
                 }
 
                 $("#BookList2").html(courseHTML2);
