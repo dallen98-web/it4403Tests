@@ -8,37 +8,15 @@
    
 </head>
 <body>
-
+ 
 
     <div class="element">
 
         <h1>Module2 </h1>
         <br /><br />
+           
 
     </div>
-    <hr class="one" />
-
-    <center><h2> Book List</h2></center>
-
-
-
-    <script>
-        $(function () {
-            $.getJSON("openlibrary-search.json", function (json) {
-
-                var courseHTML = "";
-
-                for (i in json.docs) {
-
-                    courseHTML += "<br>" + "<b>Author: </b>" + json.docs[i].author_name + "<br>" + "<b>Title: </b>" + json.docs[i].title + "<br>" + "<b>Title Suggest:  </b>" + json.docs[i].title_suggest + "<br>" + "<b>Publisher:  </b>" + json.docs[i].publisher + "<br>" + "<br>";
-                }
-
-                $("#BookList").html(courseHTML);
-            });
-        })
-    </script>
-
-    <hr class="one" />
 
 
 
