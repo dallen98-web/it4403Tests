@@ -32,11 +32,38 @@
         });
     </script>
 
+
+
     <center><p id="book_id"></p></center>
 
     <hr class="one" />
 
     <br />
+
+    <center><div id="BookList"></div></center>
+
+
+
+    <script>
+        $(function () {
+            $.getJSON("google-books-search.json", function (json) {
+
+                var courseHTML = "";
+
+                for (i in json) {
+
+                    courseHTML += "<br>" + "<b>Author: </b>" + json.[i].authors + "<br>" + "<b>Title: </b>" + json.[i].title + "<br>" + "<b>SubTitle:  </b>" + json.[i].Subtitle + "<br>" + "<b>Publisher:  </b>" + json.[i].publisher + "<br>" + "<br>";
+                }
+
+                $("#BookList").html(courseHTML);
+            });
+        })
+    </script>
+
+    <br />
+    <hr class="one" />
+
+
     <center><h2>Open Library Book List</h2></center>
 
     <hr class="one" />
