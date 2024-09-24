@@ -40,7 +40,7 @@
 
     <br />
 
-    <center><div id="BookList"></div></center>
+    <center><div id="BookList2"></div></center>
 
 
 
@@ -48,14 +48,14 @@
         $(function () {
             $.getJSON("google-books-search.json", function (json) {
 
-                var courseHTML = "";
+                var courseHTML2 = "";
 
                 for (i in json) {
 
                     courseHTML += "<br>" + "<b>Author: </b>" + json.[i].authors + "<br>" + "<b>Title: </b>" + json.[i].title + "<br>" + "<b>SubTitle:  </b>" + json.[i].Subtitle + "<br>" + "<b>Publisher:  </b>" + json.[i].publisher + "<br>" + "<br>";
                 }
 
-                $("#BookList").html(courseHTML);
+                $("#BookList2").html(courseHTML2);
             });
         })
     </script>
