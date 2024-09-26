@@ -20,9 +20,16 @@
                 var bookcover = json.volumeinfo.imagelinks.small;
 
                 $("#bookcover").attr(src, "bookcover");
-                $(title).text(title);
+                $("#title").text(title);
 
+                var resultsHTML = "";
+                for (i in json.volumeinfo.categories)
+                {
+                    resultsHTML += json.volumeinfo.categories[i] + "; ";
 
+                }
+
+                $("#category").html(resultsHTML);
             });
 
         });
@@ -36,12 +43,17 @@
 
 <body>
     <div class="myheader">
-        <br /><br /><br /><h1>Module2 </h1>
+        <br /><br /><br /><h1>Module2.1 </h1>
         <br /><br />
     </div>
 
     <hr class="one" />
+
     <h1 id="title"></h1>
     <img id="bookcover" />
+
+    <p>Categories:</p>
+    <div id="category"></div>
+
 </body>
 </html>
