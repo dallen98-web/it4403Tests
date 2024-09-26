@@ -10,35 +10,30 @@
     <script>
         $(document).ready(function () {
             var bookid = "irUACwAAQBAJ";
-            var bookdetail = "https://www.googleapis.com/books/v1/volumes/" + bookid;
-            $.getJSON(bookdetail, function (json) {
-                var booksHTML = "";
+            var bookdetail = "https://www.googleapis.com/books/v1/volumes/"+bookid;
+            $.getJSON(bookdetail, function (json)
+            {
+
+                var booksHTML ="";
                 var title = json.volumeInfo.title;
                 var author = json.volumeInfo.author;
                 var publisher = json.volumeinfo.publisher;
                 var description = json.volumeinfo.description;
                 var bookcover = json.volumeinfo.imagelinks.small;
 
-                $("#bookcover").attr(src, "bookcover");
+                $("#bookcover").attr("src",bookcover);
                 $("#title").text(title);
 
                 var resultsHTML = "";
-                for (i in json.volumeinfo.categories)
+                for (i in json.volumeInfo.categories)
                 {
-                    resultsHTML += json.volumeinfo.categories[i] + "; ";
-
+                    resultsHTML += json.volumeInfo.categories[i] + "; ";
                 }
-
                 $("#category").html(resultsHTML);
             });
 
         });
-
-
-
-
-    </script>
-
+</script>
 </head>
 
 <body>
@@ -50,8 +45,7 @@
     <hr class="one" />
 
     <h1 id="title"></h1>
-    <img id="bookcover" />
-
+    <img id="bookcover" height="200" />
     <p>Categories:</p>
     <div id="category"></div>
 
