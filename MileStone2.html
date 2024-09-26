@@ -3,59 +3,38 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
-    <link href="Styles.css" rel="stylesheet" />
-   
-</head>
-<body>
-
-
-    <div class="element">
-
-        <h1>Module2 - Test3 </h1>
-        <br />
-        <hr width="100%" color="black">
-        <br /><br />
-
-        <script>
-            $(function () {
-                $.getJSON("google-books-search.json", function (json) {
-
-                    var courseHTML = "";
-
-                    for (i in json.items) {
-
-                        courseHTML += "<br>" + "<b>Author: </b>" + json.items[i].kind + "<br>" + "<b>Title: </b>" + json.items[i].id + "<br>" + "<b>Subtitle:  </b>" + json.items[i].etag + "<br>" + "<b>Publisher:  </b>" + json.items[i].volumeInfo.authors + "<br>" + "<br>";
-                    }
-
-                    $("#BookList").html(courseHTML);
-                });
-            })
-        </script>
-
-        <center><div id="BookList"></div></center>
-
-    </div>
+    <title>Book Details Information</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <script>
-     $(function () {
-         $.getJSON("google-books-search.json", function (json) {
+        $(document).ready(function () {
+            var bookid = "irUACwAAQBAJ";
+            var bookdetail = "https://www.googleapis.com/books/v1/volumes/" + bookid;
+            $.getJSON(bookdetail, function (json) {
+                var booksHTML = "";
+                var title = json.volumeInfo.title;
+                var author = json.volumeInfo.author;
+                var publisher = json.volumeinfo.publisher;
+                var description = json.volumeinfo.description;
+                var bookcover = json.volumeinfo.imagelinks.small;
 
-             var courseHTML = "";
+                $("#bookcover").attr(src, "bookcover");
+                $(title).text(title);
 
-             for (i in json.items) {
 
-                 courseHTML += "<br>" + "<b>Author: </b>" + json.items[i].kind + "<br>" + "<b>Title: </b>" + json.items[i].id + "<br>" + "<b>Subtitle:  </b>" + json.items[i].etag + "<br>" + "<b>Publisher:  </b>" + json.items[i].volumeInfo.authors + "<br>" + "<br>";
-             }
+            });
 
-             $("#BookList").html(courseHTML);
-         });
-     })
+        });
+
+
+
+
     </script>
 
-    <br />
-    <hr class="one" />
+</head>
 
-
+<body>
+        <h1 id="title"></h1>
+        <img id="bookcover" />
 </body>
 </html>
