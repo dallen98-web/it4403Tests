@@ -3,51 +3,33 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Book Details Information</title>
+    <title>Modulel2 - David Allen</title>
     <link href="Styles.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            var bookid = "irUACwAAQBAJ";
-            var bookdetail = "https://www.googleapis.com/books/v1/volumes/"+bookid;
-            $.getJSON(bookdetail, function (json)
-            {
-
-                var booksHTML ="";
-                var title = json.volumeInfo.title;
-                var author = json.volumeInfo.author;
-                var publisher = json.volumeinfo.publisher;
-                var description = json.volumeinfo.description;
-                var bookcover = json.volumeinfo.imagelinks.small;
-
-                $("#bookcover").attr("src",bookcover);
-                $("#title").text(title);
-
-                var resultsHTML = "";
-                for (i in json.volumeInfo.categories)
-                {
-                    resultsHTML += json.volumeInfo.categories[i] + "; ";
-                }
-                $("#category").html(resultsHTML);
-            });
-
-        });
-</script>
+    
 </head>
 
 <body>
+
+    <div class="element"></div>
+
     <div class="myheader">
-        <br /><br /><br /><h1>Module2.1 </h1>
+        <br /><br /><br /><h1>Module2 </h1>
         <br /><br />
     </div>
 
     <hr class="one" />
 
-    <h1 id="title"></h1>
-    <img id="bookcover" height="200" />
-    <p>Categories:</p>
-    <div id="category"></div>
+    <center>
+        <h2>
+            <a class="linkspace" href="index.html">Home Page</a>
+            <a class="linkspace" href="BookInformation.html">Book Information Page</a>
+            <a class="linkspace" href="BookSearch.html">Book Search Page</a>
+            <a class="linkspace" href="BookShelf.html">BookShelf Page</a>
+        </h2>
+    </center>
+
 
 </body>
 </html>

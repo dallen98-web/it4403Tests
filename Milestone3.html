@@ -1,41 +1,51 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <title>Google Book Info</title>
+    <title>Google Books Search</title>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script>
-        $(function () {
-            var id = "Wfan6L9RGgYC"; //or get the parameter value from the URL ?id=Wfan6L9RGgYC; you can Google how to do it.
-            var service_point = "https://www.googleapis.com/books/v1/volumes/" + id;
-            $.getJSON(service_point, function (json) {
-                var booksHTML = "";
-                var description = json.volumeInfo.description;
-                var title = json.volumeInfo.title;
-                var url = json.volumeInfo.infoLink;
-                var cover = json.volumeInfo.imageLinks.small;
+</head>
+<body>
+    <h1 id="title"></h1>
+    <h2>
+        Searched  <span id="total"></span>; Total results: <span id="total"></span>
 
-                $("#cover").attr("src", cover);
-                $("#title").text(title);
-                $("#webpage").text(url).attr("href", url);
+
+
+        <p>The results from 30 to 45 are displayed here (15 per page; results page #3).</p>
+    </h2>
+    
+    <div id="results" style="display: flex; flex-wrap: wrap;"></div>
+      
+
+    <script>
+        $(document).ready(function () {
+            var term = "Jquery"; //or get the value from a textbox user input; you can Google how to do it.
+            var parameter = "?q=" + term + "&startIndex=30&maxResults=15";
+            var service_point = "https://www.googleapis.com/books/v1/volumes/" + parameter;
+            $.getJSON(service_point, function (json) {
+                console.log(json);
+                var total = json.totalItems;
+                $("#total").text(total);
 
                 var resultHTML = "";
-                for (i in json.volumeInfo.categories) {
-                    resultHTML += json.volumeInfo.categories[i] + "; ";
+                for (i in json.items) {
+                    var booktitle = json.items[i].volumeInfo.title;
+                    var bookid = json.items[i].id;
+                    var cover = "";
+                    if (json.items[i].volumeInfo.imageLinks != null)
+                        cover = json.items[i].volumeInfo.imageLinks.smallThumbnail;
+
+                    resultHTML += "<div class='bookdiv'>";
+                    resultHTML += "<img src='" + cover + "' style='float: left' />";
+                    resultHTML += "<a href='bookinfo.html?id=" + bookid + "'>" + booktitle + "</a>";
+                    resultHTML += "</div>";;
                 }
-                $("#category").html(resultHTML);
+                $("#results").html(resultHTML);
+                $(".bookdiv").css("width", "300px");
             });
         });
     </script>
-</head>
-
-<body>
-    <h1 id="title"></h1>
-    <p><a id="webpage"></a></p>
-    <img id="cover" height=200 />
-    <p>Categories:</p>
-    <div id="category"></div>
 
 </body>
 </html>
