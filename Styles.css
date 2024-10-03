@@ -10,6 +10,22 @@ h1 {
     text-align: center;
 }
 
+input {
+    border-radius: 5px;
+    border-color: red;
+    height: 30px;
+    width: 400px;
+    font-size: 15px;
+}
+
+button {
+    border-radius: 5px;
+    border-color: red;
+    height: 30px;
+    width: 150px;
+    font-size: 15px;
+}
+
 
 
 a.linkspace {
@@ -57,7 +73,7 @@ table,th,td
 
 /*This is the class that is used for the header*/
 .myheader {
-    height: 25%;
+    height: 10%;
     
     
 }
