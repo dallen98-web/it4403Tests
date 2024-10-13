@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Google Book Search Page</title>
+    <link href="M2Styles.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="myheader">
+     <center><h1>Book Search Page</h1></center>
+        
+    </div>
+
+    <hr class="one" />
+
+    <center>
+        <h2>
+            <a class="linkspace" href="index.html">Home Page</a>
+            <a class="linkspace" href="BookInformation.html">Book Information Page</a>
+            <a class="linkspace" href="BookShelf.html">BookShelf Page</a>
+        </h2>
+    </center>
+
+    <div class="element"></div>
+
+    <h2>
+        Total results: <span id="total"></span>  
+    </h2>
+        <br />        
+
+        <center><input id="textbox" type ="text" placeholder="Enter Book Search Here:" /></center>
+        <br />
+
+        <center><button id="Submit" type="Submit">Enter</button></center>
+           
+
+        <h2>The Top 10 books are displayed here:</h2>
+    
+    <div id="results" style="display: flex; flex-wrap: wrap;"></div>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#Submit").click(function (event) {
+                $('#textbox').val();
+                var term = $("input").val();
+            var parameter = "?q=" + term + "&startIndex=0&maxResults=10";
+            var service_point = "https://www.googleapis.com/books/v1/volumes/" + parameter;
+                $.getJSON(service_point, function (json) {
+                    console.log(json);
+                    var total = json.totalItems;
+                    $("#total").text(total);
+
+                    var resultHTML = "";
+                    for (i in json.items) {
+                        var booktitle = json.items[i].volumeInfo.title;
+                        var bookid = json.items[i].id;
+                        var cover = "";
+                        if (json.items[i].volumeInfo.imageLinks != null)
+                            cover = json.items[i].volumeInfo.imageLinks.smallThumbnail;
+
+                        resultHTML += "<div class='bookdiv'>";
+                        resultHTML += "<img src='" + cover + "' style='float: left' />";
+                        resultHTML += "<a href='bookinfo.html?id=" + bookid + "'>" + booktitle + "</a>";
+                        resultHTML += "</div>";;
+                    }
+                    $("#results").html(resultHTML);
+                    $(".bookdiv").css("width", "300px");
+
+                });
+            });
+        });
+
+    </script>
+
+</body>
+</html>
